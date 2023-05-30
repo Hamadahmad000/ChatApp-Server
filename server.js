@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.route("/").get((req, res) => {
   const option = {
     root: path.join(__dirname),
@@ -18,18 +19,14 @@ app.route("/").get((req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log("a user connected");
-  socket.on("send", (data) => {
-    console.log(data);
-    io.sockets.emit("receive", data);
-  });
+  socket.on("userConnected", (data) => {});
 
-  socket.on("client", (message) => {
+  socket.on("send", (message) => {
     console.log(message);
+
+    io.sockets.emit("receive", message);
   });
 
-  socket.emit("server-message", { message: "Welcome To Our Community" });
-  // Handling USER Disconnected
   socket.on("disconnect", () => {
     console.log("a user disconnected");
   });
@@ -39,5 +36,5 @@ app.use("/user", router);
 
 DATABASE_CONNECT(process.env.DATABASE);
 http.listen(PORT, () => {
-  console.log(`Your server is runing on port http://localhost:${PORT}`);
+  console.log(`Your server is running on port http://localhost:${PORT}`);
 });
