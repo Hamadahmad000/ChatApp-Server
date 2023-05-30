@@ -29,14 +29,14 @@ src
 ├── Controllers  
 │   ├── Routes-Controller.js  
 │   │    
-├── Helper  
-│   ├── ErroHelper.js  
-├── Middleware  
-│   └── Validation.js 
-├── Models  
-│   ├── userModel.js
-├── Database  
-     └── Conn.js
+├── Helper    
+│   ├── ErroHelper.js   
+├── Middleware    
+│   └── Validation.js   
+├── Models    
+│   ├── userModel.js  
+├── Database    
+     └── Conn.js.  
 
 
 
